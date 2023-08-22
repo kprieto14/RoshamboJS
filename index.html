@@ -3,11 +3,79 @@
   <head>
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <link rel="stylesheet" href="src/style.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Template</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lobster&display=swap" rel="stylesheet">
+    <title>Rock, Paper, Scissors</title>
   </head>
   <body>
+    <header>
+      <h1>🐾 Roshampaw 🐾</h1>
+      <h2>It is <span>Player 1's</span> turn, choose your weapon wisely</h2>
+    </header>
+
+    <main>
+      <section id="player1">
+        <h3>Player 1</h3>
+
+        <div class="grid">
+          <article class="border container rock">
+            <ul>
+              <li><img src="images/Cat-Rock.png" alt="A cat paw that looks like a rock"></li>
+              <li>Rock</li>
+            </ul>
+          </article>
+           
+          <article class="border container paper">
+            <ul>
+              <li><img src="images/Cat-Paper.png" alt="A cat paw stretched out like paper"></li>
+              <li>Paper</li>
+            </ul>
+          </article>
+      
+          <article class="border container scissors">
+            <ul>
+              <li><img src="images/Cat-Scissors.png" alt="A cat paw stretched out with claws out"></li>
+              <li>Scissors</li>
+            </ul>
+          </article> 
+        </div>
+      </section>
+
+      <section id="player2">
+        <h3>Player 2</h3>
+
+        <div class="grid">
+          <article class="container rock">
+            <ul>
+              <li><img src="images/Cat-Rock.png" alt="A cat paw that looks like a rock"></li>
+              <li>Rock</li>
+            </ul>
+          </article>
+           
+          <article class="container paper">
+            <ul>
+              <li><img src="images/Cat-Paper.png" alt="A cat paw stretched out like paper"></li>
+              <li>Paper</li>
+            </ul>
+          </article>
+      
+          <article class="container scissors">
+            <ul>
+              <li><img src="images/Cat-Scissors.png" alt="A cat paw stretched out with claws out"></li>
+              <li>Scissors</li>
+            </ul>
+          </article> 
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <p>Made with 🫶🏽 in Florida</p>
+    </footer>
+
     <script type="module" src="/src/main.ts"></script>
-    <p>Hello, World</p>
   </body>
 </html>
