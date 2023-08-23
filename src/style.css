@@ -66,6 +66,7 @@ span {
 main {
   display: flex;
   justify-content: center;
+  flex-wrap: wrap;
   gap: 5rem;
   margin-top: 0px;
 }
@@ -77,6 +78,7 @@ section {
   padding: 2rem;
   opacity: 25%;
   width: 30%;
+  min-width: 300px;
 }
 
 footer {
@@ -118,12 +120,23 @@ img {
 }
 
 
-@media only screen and (max-width: 600px) {
+@media only screen and (max-width: 725px) {
   h1 {
-    font-size: 2rem;
+    font-size: 3rem;
+    letter-spacing: 0rem;
   }
 
-  h3 {
-    font: 1rem;
+  main {
+    padding: 0rem 1rem;
+    gap: 2rem;
+  }
+
+  section {
+    padding: .5rem
+  }
+
+  img {
+    max-width: 75px;
+    max-height: 75px;
   }
 }
