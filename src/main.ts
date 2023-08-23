@@ -3,8 +3,8 @@ import './style.css'
 const sections = document.querySelectorAll('section')
 const turnBanner = document.querySelector('h2')
 
-let playerOne = ''
-let playerTwo = ''
+let playerOne: string | null = ''
+let playerTwo:string | null = ''
 
 function chooseWeapon(event: MouseEvent) {
     const iconClickedOn = event.target;
@@ -17,44 +17,32 @@ function chooseWeapon(event: MouseEvent) {
     
         //Checks if the icon clicked is the first player
         if(currentPlayer?.classList.contains('active-player') && currentPlayer?.classList.contains('player1')) {
-            //Looks and assigns weapon to player1
-            if(weapon?.classList.contains('rock')) {
-                playerOne = "rock"
-            }
-            else if(weapon?.classList.contains('paper')) {
-                playerOne = "paper"
-            }
-            else if(weapon?.classList.contains('scissors')) {
-                playerOne = "scissors"
-            }
+            //Looks and assigns weapon to player1 by looking at the first class listed in the div
+            if(weapon?.classList.item(0) !== undefined && weapon?.classList.item(0) !== null) {
+                playerOne = weapon?.classList.item(0)
 
-            //Take activeplayer class from player1 and give to player2
-            currentPlayer.classList.remove('active-player')
-            sections[1].classList.add('active-player')
-            
-            //Change Span to indicate it is Player 2's turn
-            if(turnBanner instanceof HTMLHeadingElement) {
-                turnBanner.innerHTML = "It is <span>Player 2's</span> turn, choose your weapon wisely"
+                //Take activeplayer class from player1 and give to player2
+                currentPlayer.classList.remove('active-player')
+                sections[1].classList.add('active-player')
+                
+                //Change Span to indicate it is Player 2's turn
+                if(turnBanner instanceof HTMLHeadingElement) {
+                    turnBanner.innerHTML = "It is <span>Player 2's</span> turn, choose your weapon wisely"
+                }   
             }
         }
         //Checks if 2nd player is active
         else if(currentPlayer?.classList.contains('active-player') && currentPlayer?.classList.contains('player2')) {
-            //Looks and assigns weapon to player2
-            if(weapon?.classList.contains('rock')) {
-                playerTwo = "rock"
-            }
-            else if(weapon?.classList.contains('paper')) {
-                playerTwo = "paper"
-            }
-            else if(weapon?.classList.contains('scissors')) {
-                playerTwo = "scissors"
-            }
+            //Looks and assigns weapon to player2 by looking at the first class in the div
+           if(weapon?.classList.item(0) !== undefined && weapon?.classList.item(0) !== null) {
+            playerTwo = weapon?.classList.item(0)
 
             //Removes activeplayer from player2 and then checks the results
             currentPlayer.classList.remove('active-player')
             checkResults()
             //Makes button visibile to play again
             document.querySelector('button')?.classList.remove('hidden')
+           }
         }
     }
 }
@@ -62,51 +50,63 @@ function chooseWeapon(event: MouseEvent) {
 //Compares first player to 2nd player's choices
 function checkResults() {
     switch(playerOne) {
-        case "rock":
-            switch(playerTwo) {
-                case "rock":
-                    victoryScreech("draw") 
-                    break
-
-                case "paper":
-                    victoryScreech("lose") 
-                    break
-
-                case "scissors":
-                    victoryScreech("win") 
-                    break
+        case 'rock':
+            if(playerTwo === 'paper' || playerTwo === 'spock') {
+                victoryScreech('lose')
+            }
+            else if(playerTwo === 'scissors' || playerTwo === 'lizard') {
+                victoryScreech('win')
+            }
+            else if(playerTwo === 'rock') {
+                victoryScreech('draw')
             }
             break
 
         case "paper":
-            switch(playerTwo) {
-                case "rock":
-                    victoryScreech("win") 
-                    break
-
-                case "paper":
-                    victoryScreech("draw") 
-                    break
-
-                case "scissors":
-                    victoryScreech("lose") 
-                    break
-            } 
+            if(playerTwo === 'scissors' || playerTwo === 'lizard') {
+                victoryScreech('lose')
+            }
+            else if(playerTwo === 'rock' || playerTwo === 'spock') {
+                victoryScreech('win')
+            }
+            else if(playerTwo === 'paper') {
+                victoryScreech('draw')
+            }
             break
 
         case "scissors":
-            switch(playerTwo) {
-                case "rock":
-                    victoryScreech("lose") 
-                    break
-
-                case "paper":
-                    victoryScreech("win") 
-                    break
-
-                case "scissors":
-                    victoryScreech("draw") 
-                    break
+            if(playerTwo === 'rock' || playerTwo === 'spock') {
+                victoryScreech('lose')
+            }
+            else if(playerTwo === 'paper' || playerTwo === 'lizard') {
+                victoryScreech('win')
+            }
+            else if(playerTwo === 'scissors') {
+                victoryScreech('draw')
+            }
+            break
+        
+        case "lizard":
+            if(playerTwo === 'rock' || playerTwo === 'scissors') {
+                victoryScreech('lose')
+            }
+            else if (playerTwo === 'spock' || playerTwo === 'paper') {
+                victoryScreech('win')
+            }
+            else if (playerTwo === 'lizard') {
+                victoryScreech('draw')
+            }
+            break
+        
+        case "spock":
+            if(playerTwo === 'lizard' || playerTwo === 'paper') {
+                victoryScreech('lose')
+            }
+            else if (playerTwo === 'rock' || playerTwo === 'scissors') {
+                victoryScreech('win')
+            }
+            else if (playerTwo === 'spock') {
+                victoryScreech('draw')
             }
             break
     }
@@ -116,20 +116,20 @@ function victoryScreech(status:string) {
     switch(status) {
         case "draw":
             if(turnBanner instanceof HTMLHeadingElement) {
-                turnBanner.innerHTML = '<span>Draw</span> ⚔️ Good job both of you!'
+                turnBanner.innerHTML = `<span>Draw</span> ⚔️ Player 1 & 2 chose ${playerOne}`
             }
             break;
 
         case "win":
             if(turnBanner instanceof HTMLHeadingElement) {
-                turnBanner.innerHTML = 'Congratulations <span>Player 1</span>! 😻'
+                turnBanner.innerHTML = `😻 <span>Player 1's</span> ${playerOne} beats ${playerTwo}`
             }
             sections[0].classList.add('winner')
             break;
 
         case "lose":
             if(turnBanner instanceof HTMLHeadingElement) {
-                turnBanner.innerHTML = 'Congratulations <span>Player 2</span>! 😻'
+                turnBanner.innerHTML = `<span>Player 2's</span> ${playerTwo} beats ${playerOne} 😻`
             }
             sections[1].classList.add('winner')
             break;
@@ -150,7 +150,6 @@ function restartGame(event: MouseEvent) {
         }
 
         document.querySelector('button')?.classList.add('hidden')
-        console.log(turnBanner)
     }
 }
 

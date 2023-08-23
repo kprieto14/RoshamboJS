@@ -56,10 +56,6 @@ button:hover {
   cursor: pointer;
 }
 
-.hidden {
-  display: none;
-}
-
 span {
   color: #aef5d4;
   font-family: 'Lobster', cursive;
@@ -90,6 +86,7 @@ footer {
 
 img {
   max-height: 150px;
+  max-width: 150px;
 }
 
 .active-player, .winner {
@@ -105,13 +102,28 @@ img {
 }
 
 .grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  grid-template-rows: 1fr 1fr;
-  grid-gap: 2rem;
-  padding-top: 1rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+  justify-content: center;
+  padding-top: 2rem;
 }
 
 .grid div:first-child {
   grid-column: span 2;
+}
+
+.hidden {
+  display: none;
+}
+
+
+@media only screen and (max-width: 600px) {
+  h1 {
+    font-size: 2rem;
+  }
+
+  h3 {
+    font: 1rem;
+  }
 }
