@@ -79,6 +79,7 @@ section {
   border-radius: 5px;
   text-align: center;
   padding: 2rem;
+  opacity: 25%;
   width: 30%;
 }
 
@@ -89,6 +90,10 @@ footer {
 
 img {
   max-height: 150px;
+}
+
+.active-player, .winner {
+  opacity: 100%;
 }
   
 .active-player .border ul:hover{

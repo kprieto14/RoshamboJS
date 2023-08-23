@@ -124,12 +124,14 @@ function victoryScreech(status:string) {
             if(turnBanner instanceof HTMLHeadingElement) {
                 turnBanner.innerHTML = 'Congratulations <span>Player 1</span>! 😻'
             }
+            sections[0].classList.add('winner')
             break;
 
         case "lose":
             if(turnBanner instanceof HTMLHeadingElement) {
                 turnBanner.innerHTML = 'Congratulations <span>Player 2</span>! 😻'
             }
+            sections[1].classList.add('winner')
             break;
     }
 }
@@ -138,8 +140,10 @@ function restartGame(event: MouseEvent) {
     const itemClickedOn = event.target
 
     if(itemClickedOn instanceof HTMLButtonElement) {
-        //Makes player 1 active-player again
+        //Makes player 1 active-player again and removes winner off both sections
         sections[0].classList.add('active-player')
+        sections[0].classList.remove('winner')
+        sections[1].classList.remove('winner')
         //Changes turn banner back to original state
         if(turnBanner instanceof HTMLHeadingElement) {
             turnBanner.innerHTML = "It is <span>Player 1's</span> turn, choose your weapon wisely"
