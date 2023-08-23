@@ -42,10 +42,29 @@ h3 {
   margin: 0;
 }
 
+button {
+  width: 5rem;
+  height: 2rem;
+  background-color: #f18cc9;
+  border-radius: 30px;
+  border-style: none;
+}
+
+button:hover {
+  background-color: #aef5d4;
+  transition: .5s ease;
+  cursor: pointer;
+}
+
+.hidden {
+  display: none;
+}
+
 span {
   color: #aef5d4;
   font-family: 'Lobster', cursive;
   font-size: larger;
+  text-decoration: underline;
 }
 
 main {
@@ -72,11 +91,12 @@ img {
   max-height: 150px;
 }
   
-.border ul:hover{
+.active-player .border ul:hover{
   box-shadow: 0 0 0 5px #aef5d4;
   border-radius: 30px;
   transition: .5s ease;
   cursor: pointer; 
+  color: #aef5d4;
 }
 
 .grid {
@@ -87,6 +107,6 @@ img {
   padding-top: 1rem;
 }
 
-.grid article:first-child {
+.grid div:first-child {
   grid-column: span 2;
 }
