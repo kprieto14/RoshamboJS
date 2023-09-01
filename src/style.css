@@ -78,10 +78,10 @@ section {
   border: solid #f18cc9 1px;
   border-radius: 5px;
   text-align: center;
-  padding: 2rem;
+  padding: 2rem 2rem 0rem 2rem;
   opacity: 25%;
   width: 30%;
-  min-width: 300px;
+  min-width: 18rem;
 }
 
 footer {
@@ -90,11 +90,12 @@ footer {
 }
 
 img {
-  max-height: 150px;
-  max-width: 150px;
+  height: 100%;
+  width: 100%;
 }
 
-.active-player, .winner {
+.active-player,
+.winner {
   opacity: 100%;
 }
 
@@ -111,15 +112,26 @@ img {
 }
 
 .grid {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 2rem;
-  justify-content: center;
-  padding-top: 2rem;
+  display: grid;
+  align-items: start;
+  grid-template-columns: repeat(6, 1fr);
+  grid-template-rows: 1fr 1fr;
+  grid-gap: 32px;
+  padding: 2.5rem 1rem 0rem 1rem;
 }
 
-.grid div:first-child {
+.rock,
+.paper,
+.scissors {
   grid-column: span 2;
+}
+
+.lizard {
+  grid-column: 2 / span 2;
+}
+
+.spock {
+  grid-column: 4 / span 2;
 }
 
 .hidden {
@@ -144,10 +156,5 @@ img {
 
   section {
     padding: .5rem
-  }
-
-  img {
-    max-width: 75px;
-    max-height: 75px;
   }
 }
